@@ -1,34 +1,25 @@
 ## AbstractParser
 <div align="center">
-  <img src="https://github.com/HassanKhalil321/PubmedAbstractParser/blob/main/assets/model_work.jpg" width="1000"/>
+  <img src="https://github.com/HassanKhalil321/sign_language_action_Detection/blob/main/assets/model.jpg" width="1000"/>
 </div>
 
 
 ## Introduction
-Welcome to PubMed Abstract Parser, a project focused on extracting and organizing information from PubMed abstracts using advanced natural language processing techniques. This tool aims to make biomedical literature more accessible and manageable for researchers and healthcare professionals, enhancing the efficiency of information retrieval and analysis
+Sign Language Action Detection is a deep learning project aimed at recognizing and interpreting sign language gestures from video inputs. This repository contains the implementation of a model that takes videos as input and predicts the corresponding sign language action classes
+
 ## Dataset
-
-The **PubMed_200k_RCT_numbers_replaced_with_at_sign** dataset consists of 200,000 abstracts sourced from PubMed, where numerical values have been anonymized by replacing them with "@" symbols. This curated collection is tailored for natural language processing tasks within the biomedical field, facilitating research in text mining, information extraction, and the development of machine learning models.
-
-
+The WLAS dataset, or Word-Level American Sign Language Dataset, is a specialized collection of video recordings designed for training and evaluating automatic sign language recognition systems. It comprises videos depicting various American Sign Language (ASL) words performed by different signers, capturing the nuances of hand gestures, facial expressions, and body movements. Each video is annotated with ground-truth labels corresponding to the specific ASL word being signed, facilitating supervised learning approaches
 ## Model Overview
 
 **Input Handling:**
-After receiving a medical abstract as input, the model divides it into two components: the statements within the abstract and their corresponding line numbers. Each component is processed through separate pathways in the model.
+After receiving the video each video will be separated to 25 frames drawing the landmarks of the body on the images before passing it tp our model 
 
-**Statements Input Processing:**
-- The statements are first passed through text vectorization and embedding layers.
-- They are then processed through two 1D convolutional layers.
-- Finally, the output is passed through a flattening layer for feature extraction.
+**videos Input Processing:**
 
-**Statement Line Number Input:**
-- The line numbers are processed through a dense layer to provide positional context.
-
-**Concatenation and Final Output:**
-- The outputs from both pathways (statements and line numbers) are concatenated.
-- This concatenated output is processed to produce parsed text.
-- The final output categorizes the text into sections such as background, methods, results, conclusion, or objectives.
-
+- The frames are first passed through our 3 CNN blocks.
+- They are then processed through a dense layer 
+-  This is followed by a flatten layer and a dropout layer (0.5) before passing it through a dense layer with softmax activation.
+-  and end up a classification label like (GO)
 
 ## Loss
 <div align="center">
