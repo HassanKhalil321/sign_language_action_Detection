@@ -1,4 +1,4 @@
-## AbstractParser
+## sign Language action detection
 <div align="center">
   <img src="https://github.com/HassanKhalil321/sign_language_action_Detection/blob/main/assets/model.jpg" width="1000"/>
 </div>
